@@ -1,10 +1,13 @@
+---
 name: Rust
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
-    branches: [ "main" ]
+    branches:
+      - "main"
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - "main"
 
 env:
   CARGO_TERM_COLOR: always
@@ -14,9 +17,25 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      postgres:  # Label used to access the service container
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: pgpasswd
+          POSTGRES_USER: pguser
+          POSTGRES_DB: pgdb
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+      - uses: actions/checkout@v6
+      - name: Build
+        run: cargo build --verbose
+      - name: Run tests
+        run: DATABASE_URL=postgresql://pguser:pgpasswd@localhost:5432/pgdb cargo test --verbose
