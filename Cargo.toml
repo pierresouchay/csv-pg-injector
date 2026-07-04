@@ -1,0 +1,26 @@
+[package]
+name = "csv-pg-injector"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+authors = ["Pierre Souchay <pierre@souchay.net>"]
+description = "Inject CSV files with dependencies into a PostgreSQL database, introspecting the schema"
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/pierresouchay/csv-pg-injector"
+
+[[bin]]
+name = "csv-pg-injector"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+csv = "1"
+percent-encoding = "2"
+postgres = "0.19"
+prometheus = "0.13"
+regex = "1"
+
+[profile.release]
+lto = "thin"

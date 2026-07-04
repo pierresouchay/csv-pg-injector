@@ -1,0 +1,9 @@
+book_id,title,author_id,publisher_id,isbn,price,is_featured
+1,Pride and Prejudice,1,1,9780141439518,9.99,true
+2,Nineteen Eighty-Four,2,1,9780451524935,12.50,true
+3,Norwegian Wood,3,2,9780375704024,14.00,false
+4,Kafka on the Shore,3,2,9781400079278,15.25,false
+5,Half of a Yellow Sun,4,3,9781400095209,13.75,false
+6,Americanah,4,3,9780307455925,16.00,false
+7,One Hundred Years of Solitude,5,2,9780060883287,11.20,false
+8,Love in the Time of Cholera,5,2,9780307389732,10.80,false
