@@ -86,5 +86,5 @@ jobs:
         if: startsWith(github.event.ref, 'refs/tags/v')
         uses: houseabsolute/actions-rust-release@v0
         with:
-          executable-name: ubi
+          executable-name: csv-pg-injector
           target: ${{ matrix.platform.target }}
