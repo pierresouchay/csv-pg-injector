@@ -85,6 +85,8 @@ jobs:
       - name: Publish artifacts and release
         if: startsWith(github.event.ref, 'refs/tags/v')
         uses: houseabsolute/actions-rust-release@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASESECRET }}
         with:
           executable-name: csv-pg-injector
           target: ${{ matrix.platform.target }}
